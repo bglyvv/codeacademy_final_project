@@ -15,9 +15,9 @@ mkdir -p /src/my-app
 cd /src/my-app
 
 
-git clone https://github.com/bglyvv/StepProject_ABB.git
+git clone https://github.com/bglyvv/codeacademy_final_project
 
-cd StepProject_ABB/Backend
+cd codeacademy_final_project/Backend
 
 docker build -t node_app .
 docker run -p 80:80 node_app

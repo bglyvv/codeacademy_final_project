@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import domain from "../../Domain/Domain";
 import axios from "axios";
+import os from "os-browserify";
 
 export default function Status() {
   const [statusData, setStatusData] = useState("");
@@ -8,7 +9,7 @@ export default function Status() {
 
   const getStatus = useCallback(async () => {
     await axios
-      .get(domain + "status")
+      .get(process.env.REACT_APP_API_URL + "/status")
       .then((response) => {
         setStatusData(response.data);
         setStatusCode(response.status);

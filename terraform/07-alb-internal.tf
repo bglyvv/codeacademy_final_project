@@ -8,8 +8,8 @@ resource "aws_lb" "backend_alb" {
   ]
 
   subnets = [
-    aws_subnet.private-subnet-1.id, 
-    aws_subnet.private-subnet-2.id
+    aws_subnet.public-subnet-1.id, 
+    aws_subnet.public-subnet-2.id
   ]
 
   enable_deletion_protection = false

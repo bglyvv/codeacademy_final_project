@@ -15,9 +15,9 @@ mkdir -p /src/my-app
 cd /src/my-app
 
 
-git clone https://github.com/bglyvv/StepProject_ABB.git
+git clone https://github.com/bglyvv/codeacademy_final_project
 
-cd StepProject_ABB/Frontend
+cd codeacademy_final_project/Frontend
 
 docker build -t react_app .
 docker run -e REACT_APP_API_URL=${backend_url} -p 80:80 react_app

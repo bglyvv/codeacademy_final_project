@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 import domain from '../../Domain/Domain';
 import * as $ from 'jquery'
+import os from "os-browserify";
 
 function UserCreateForm() {
 
@@ -15,7 +16,7 @@ function UserCreateForm() {
         }
         console.log(data)
 
-        axios.post(domain+"user/add",data).then(response=>{
+        axios.post(process.env.REACT_APP_API_URL+"/user/add",data).then(response=>{
             console.log(response)
             if(response.status === 200){
                 alert(JSON.stringify(response.data))

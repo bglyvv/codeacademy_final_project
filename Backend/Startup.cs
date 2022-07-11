@@ -48,7 +48,7 @@ namespace StepProject
                 options.AddPolicy(name: "AllowOrigin",
                     builder =>
                     {
-                        builder.WithOrigins("https://localhost:3000", "http://localhost:3000")
+                        builder.WithOrigins("*")
                                             .AllowAnyHeader()
                                             .AllowAnyMethod();
                     });
