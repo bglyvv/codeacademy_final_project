@@ -1,3 +1,3 @@
-const domain = "http://localhost:8080/"
+const domain = REACT_APP_API_URL
 
 export default domain
