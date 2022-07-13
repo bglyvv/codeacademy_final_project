@@ -9,7 +9,11 @@ RUN npm install
 
 # Build
 COPY . .
-RUN npm run build
+
+ARG DOMAIN
+
+
+RUN REACT_APP_API_URL=${DOMAIN} npm run build
 
 # -----------------------------------------------------------------------------
 # SERVING IMAGE

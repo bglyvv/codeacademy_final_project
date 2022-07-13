@@ -19,5 +19,5 @@ git clone https://github.com/bglyvv/codeacademy_final_project
 
 cd codeacademy_final_project/Frontend
 
-docker build -t react_app .
-docker run -e REACT_APP_API_URL=${backend_url} -p 80:80 react_app
+docker build --build-arg DOMAIN=${backend_url} -t react_app .
+docker run -p 80:80 react_app
