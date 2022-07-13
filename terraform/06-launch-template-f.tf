@@ -1,7 +1,7 @@
 resource "aws_launch_template" "react_frontend" {
     name = "frontend-service"
     instance_type = "t2.micro"
-    # depends_on = [aws_launch_template.nodejs_backend]
+    depends_on = [aws_launch_template.nodejs_backend]
     image_id = "ami-0cff7528ff583bf9a"
     instance_initiated_shutdown_behavior = "terminate"
 
