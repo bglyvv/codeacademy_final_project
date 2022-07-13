@@ -29,6 +29,6 @@ resource "aws_launch_template" "react_frontend" {
         }
     }
 
-    user_data = filebase64("files/user_data_frontend.sh")
+    user_data = filebase64("files/user_data_frontend.sh",local.vars)
 }
 

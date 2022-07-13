@@ -3,19 +3,19 @@ resource "aws_lb" "backend_alb" {
   internal           = false
   load_balancer_type = "application"
 
-  security_groups    = [
+  security_groups = [
     aws_security_group.internet_interfacing_sg.id
   ]
 
   subnets = [
-    aws_subnet.public-subnet-1.id, 
+    aws_subnet.public-subnet-1.id,
     aws_subnet.public-subnet-2.id
   ]
 
   enable_deletion_protection = false
 
   tags = {
-    Name        = "alb-app-backend"
+    Name = "alb-app-backend"
     # Environment = "production"
   }
 }
@@ -24,12 +24,12 @@ resource "aws_lb" "backend_alb" {
 
 resource "aws_lb_listener" "http_backend" {
   load_balancer_arn = aws_lb.backend_alb.arn
-  port = 80
-  protocol = "HTTP"
+  port              = 80
+  protocol          = "HTTP"
   depends_on        = [aws_lb_target_group.app_target_group_backend]
 
   default_action {
-    type = "forward"
+    type             = "forward"
     target_group_arn = aws_lb_target_group.app_target_group_backend.arn
   }
 }
@@ -50,13 +50,20 @@ resource "aws_lb_listener_rule" "my_app_listener_rule_backend" {
 }
 
 resource "aws_lb_target_group" "app_target_group_backend" {
-  vpc_id = aws_vpc.production-vpc.id
+  vpc_id   = aws_vpc.production-vpc.id
   name     = "tg-app-backend"
   port     = 80
   protocol = "HTTP"
 }
 
 output "backend_url" {
-    value = aws_lb.backend_alb.dns_name
-    description = "Backend URL for Frontend"
+  value       = aws_lb.backend_alb.dns_name
+  description = "Backend URL for Frontend"
+}
+
+locals {
+  
+  vars = {
+    backend_url = aws_lb.backend_alb.dns_name
+  }
 }
