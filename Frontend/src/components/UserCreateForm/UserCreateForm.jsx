@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState} from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios'
@@ -7,7 +7,7 @@ import * as $ from 'jquery'
 import os from "os-browserify";
 
 function UserCreateForm() {
-
+    const [url, setUrl] = useState(process.env.REACT_APP_API_URL);
     const createUser = (e)=>{
         e.preventDefault()
         var data = {
@@ -16,7 +16,7 @@ function UserCreateForm() {
         }
         console.log(data)
 
-        axios.post(process.env.REACT_APP_API_URL+"/user/add",data).then(response=>{
+        axios.post(url+"/user/add",data).then(response=>{
             console.log(response)
             if(response.status === 200){
                 alert(JSON.stringify(response.data))

@@ -14,10 +14,12 @@ import os from "os-browserify";
 function MyTable() {
   const [users, setUsers] = useState([]);
   const [mainLoading, setMainLoading] = useState(false);
+  const [url, setUrl] = useState(process.env.REACT_APP_API_URL)
   const getUsers = useCallback(async () => {
     console.log(process.env)
-    console.log(process.env.REACT_APP_API_URL)
-    await axios.get(process.env.REACT_APP_API_URL + "/user/list").then((response) => {
+    console.log()
+    let url = 
+    await axios.get(url + "/user/list").then((response) => {
       console.log(response);
       var arr = [];
       if (response.status === 200) {
@@ -56,7 +58,7 @@ function MyTable() {
       name: $(".user-name-" + id).val(),
       phone: $(".user-phone-" + id).val(),
     };
-    axios.patch(process.env.REACT_APP_API_URL + "/user/edit/" + id, data).then((response) => {
+    axios.patch(url+ "/user/edit/" + id, data).then((response) => {
       if (response.status === 200) {
         if (response.data.operation_status === "success") {
           updatedUser.editState = false;
@@ -68,7 +70,7 @@ function MyTable() {
   };
 
   const deleteUser = (id) => {
-    axios.delete(process.env.REACT_APP_API_URL + "/user/delete/" + id).then((response) => {
+    axios.delete(url + "/user/delete/" + id).then((response) => {
       if (response.status === 200) {
         if (response.data.operation_status === "success") {
           alert(JSON.stringify(response.data))

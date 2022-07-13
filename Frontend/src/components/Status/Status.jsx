@@ -6,11 +6,14 @@ import os from "os-browserify";
 export default function Status() {
   const [statusData, setStatusData] = useState("");
   const [statusCode, setStatusCode] = useState("");
+  const [url, setUrl] = useState(process.env.REACT_APP_API_URL);
 
   const getStatus = useCallback(async () => {
+
     await axios
-      .get(process.env.REACT_APP_API_URL + "/status")
+      .get(url+ "/status")
       .then((response) => {
+        console.log(response)
         setStatusData(response.data);
         setStatusCode(response.status);
       })
