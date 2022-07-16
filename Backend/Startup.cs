@@ -48,9 +48,7 @@ namespace StepProject
                 options.AddDefaultPolicy(
                     builder =>
                     {
-                        builder.WithOrigins("*")
-                                            .AllowAnyHeader()
-                                            .AllowAnyMethod();
+                        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
                     });
             });
             services.AddHealthChecks().AddCheck<SqlConnectionHealthCheck>("SQLDBConnectionCheck");
@@ -73,13 +71,7 @@ namespace StepProject
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseCors(builder =>
-            {
-                builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader();
-            });
+            app.UseCors();
 
             var options = new HealthCheckOptions();
             options.ResponseWriter = async (c, r) =>
