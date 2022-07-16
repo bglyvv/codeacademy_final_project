@@ -10,6 +10,7 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace StepProject.Controllers
 {
@@ -18,10 +19,12 @@ namespace StepProject.Controllers
     public class UserController : ControllerBase
     {
         private readonly AppDbContext _ctx;
+        private readonly IConfiguration _config;
 
-        public UserController(AppDbContext ctx)
+        public UserController(AppDbContext ctx, IConfiguration config)
         {
             _ctx = ctx;
+            _config = config;
         }
 
         [HttpGet]
@@ -204,6 +207,20 @@ namespace StepProject.Controllers
             //return Ok(await _ctx.Users.ToListAsync());
         }
 
+        [HttpGet]
+        [Route("connection")]
+        public async Task<IActionResult> GetConnection(int id)
+        {
+            try
+            {
+                return Ok(_config.GetConnectionString("Default"));
+            }
+            catch (System.Exception)
+            {
+                return Ok();
+            }
+
+        }
 
 
     }
