@@ -20,4 +20,4 @@ git clone https://github.com/bglyvv/codeacademy_final_project
 cd codeacademy_final_project/Backend
 
 docker build -t node_app .
-docker run -p 80:80 node_app
+docker run -p 80:80 -e ConnectionStrings__Default=${db_endpoint} node_app

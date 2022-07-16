@@ -5,6 +5,7 @@ WORKDIR /app
 COPY *.csproj ./
 RUN dotnet restore
 
+ENV CONNECTIONSTRINGS__ASPNETCORE_CONNECTION="Server=sql-server;Database=NetCoreSample;User Id=sa;Password=sa@a2020;MultipleActiveResultSets=true"
 # Copy everything else and build
 COPY . ./
 RUN dotnet publish -c Release -o out

@@ -120,3 +120,4 @@ C:\Users\Kanan\Desktop\StepProject_ABB\Backend\obj\Debug\netcoreapp3.1\StepProje
 C:\Users\Kanan\Desktop\StepProject_ABB\Backend\obj\Debug\netcoreapp3.1\StepProject.dll
 C:\Users\Kanan\Desktop\StepProject_ABB\Backend\obj\Debug\netcoreapp3.1\StepProject.pdb
 C:\Users\Kanan\Desktop\StepProject_ABB\Backend\obj\Debug\netcoreapp3.1\StepProject.genruntimeconfig.cache
+C:\Users\Kanan\Desktop\StepProject_ABB\Backend\bin\Debug\netcoreapp3.1\appsettings.Production.json

@@ -35,7 +35,7 @@ namespace StepProject
         {
             services.AddControllers().AddNewtonsoftJson(options =>
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-            
+
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseMySql(Configuration.GetConnectionString("Default"), new MySqlServerVersion(new Version(8, 0, 28)));
@@ -64,6 +64,12 @@ namespace StepProject
                 app.UseDeveloperExceptionPage();
             }
 
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -82,12 +88,12 @@ namespace StepProject
 
                 var result = JsonConvert.SerializeObject(new
                 {
-                    status = (r.Status.ToString() == "Healthy"?"OK":"Fail"),
+                    status = (r.Status.ToString() == "Healthy" ? "OK" : "Fail"),
                 });
                 await c.Response.WriteAsync(result);
             };
 
-            app.UseHealthChecks("/status",options);
+            app.UseHealthChecks("/status", options);
 
             app.UseAuthorization();
 
