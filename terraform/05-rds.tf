@@ -50,8 +50,8 @@ resource "aws_db_instance" "production" {
 
 output "db_endpoint" {
   # value = "Host="+aws_db_instance.production.endpoint+";Port=3306;Username="+aws_db_instance.production.username+";Password="+aws_db_instance.production.password+";Database="+aws_db_instance.production.name
-    value       = aws_db_instance.production.endpoint
-#   value       = "Host=${aws_db_instance.production.endpoint};Port=3306;Username=${aws_db_instance.production.username};Password=${aws_db_instance.production.password};Database=${aws_db_instance.production.name}"
+  # value       = aws_db_instance.production.endpoint
+  value       = "Host=${aws_db_instance.production.endpoint};Port=3306;Username=${aws_db_instance.production.username};Password=${aws_db_instance.production.password};Database=${aws_db_instance.production.name}"
   description = "The endpoint for logging in to the database."
   sensitive   = true
 }
