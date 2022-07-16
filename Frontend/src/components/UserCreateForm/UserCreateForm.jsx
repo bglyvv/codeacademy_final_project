@@ -7,7 +7,7 @@ import * as $ from 'jquery'
 import os from "os-browserify";
 
 function UserCreateForm() {
-    const [url, setUrl] = useState(process.env.REACT_APP_API_URL);
+    const [url, setUrl] = useState("http://"+process.env.REACT_APP_API_URL);
     const createUser = (e)=>{
         e.preventDefault()
         var data = {
