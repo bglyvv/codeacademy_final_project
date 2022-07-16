@@ -45,7 +45,7 @@ namespace StepProject
             services.AddHttpClient();
             services.AddCors(options =>
             {
-                options.AddPolicy(name: "AllowOrigin",
+                options.AddDefaultPolicy(
                     builder =>
                     {
                         builder.WithOrigins("*")
@@ -67,7 +67,13 @@ namespace StepProject
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseCors("AllowOrigin");
+            app.UseCors(builder =>
+            {
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            });
 
             var options = new HealthCheckOptions();
             options.ResponseWriter = async (c, r) =>
