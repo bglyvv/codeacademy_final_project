@@ -17,8 +17,7 @@ function MyTable() {
   const [url, setUrl] = useState(process.env.REACT_APP_API_URL)
   const getUsers = useCallback(async () => {
     console.log(process.env)
-    console.log()
-    let url = 
+    console.log(url + "/user/list")
     await axios.get(url + "/user/list").then((response) => {
       console.log(response);
       var arr = [];
