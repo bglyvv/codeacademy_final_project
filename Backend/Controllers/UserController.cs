@@ -42,7 +42,7 @@ namespace StepProject.Controllers
                     status = "Connection to the server cannot be established"
                 });
             }
-            
+
         }
 
         [HttpGet]
@@ -82,7 +82,7 @@ namespace StepProject.Controllers
         {
             try
             {
-                if(user.Name== null || user.Phone == null)
+                if (user.Name == null || user.Phone == null)
                 {
                     return Ok(new UserOperationDTO
                     {
@@ -94,15 +94,15 @@ namespace StepProject.Controllers
                 await _ctx.Users.AddAsync(user);
                 await _ctx.SaveChangesAsync();
                 //return ValidationProblem(ModelState);
-                
+
                 return Ok(new UserOperationDTO
                 {
                     user_id = user.Id,
                     operation_status = "success",
                     operation_type = "add"
                 });
-               
-                
+
+
             }
             catch (System.Exception)
             {
@@ -122,7 +122,7 @@ namespace StepProject.Controllers
         {
             try
             {
-                User user = await _ctx.Users.FirstAsync(u=>u.Id == id);
+                User user = await _ctx.Users.FirstAsync(u => u.Id == id);
                 if (user == null)
                 {
                     return Ok(new UserOperationDTO
@@ -211,14 +211,8 @@ namespace StepProject.Controllers
         [Route("connection")]
         public async Task<IActionResult> GetConnection(int id)
         {
-            try
-            {
-                return Ok(_config.GetConnectionString("Default"));
-            }
-            catch (System.Exception)
-            {
-                return Ok();
-            }
+            return Ok(_config.GetConnectionString("Default"));
+
 
         }
 
