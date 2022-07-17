@@ -55,3 +55,10 @@ output "db_endpoint" {
   description = "The endpoint for logging in to the database."
 #   sensitive   = true
 }
+
+locals {
+  
+  vars = {
+    db_endpoint = aws_db_instance.production.endpoint
+  }
+}
