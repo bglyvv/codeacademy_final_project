@@ -59,6 +59,6 @@ output "db_endpoint" {
 locals {
   
   var = {
-    db_endpoint = "salam xanim"
+    db_endpoint = aws_db_instance.production.endpoint
   }
 }
