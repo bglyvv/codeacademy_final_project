@@ -63,7 +63,7 @@ output "backend_url" {
 
 locals {
   
-  vars = {
+  var = {
     backend_url = aws_lb.backend_alb.dns_name
   }
 }
