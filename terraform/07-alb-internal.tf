@@ -62,7 +62,7 @@ output "backend_url" {
 }
 
 output "frontend_url" {
-  value       = aws_lb.public_alb.dns_name
+  value       = aws_lb.pubic_alb.dns_name
   description = "DB"
 }
 
