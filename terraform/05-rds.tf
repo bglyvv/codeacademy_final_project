@@ -6,7 +6,7 @@ resource "aws_security_group" "rds" {
     protocol    = "tcp"
     from_port   = "3306"
     to_port     = "3306"
-    cidr_blocks = ["10.0.0.0/16"]
+    cidr_blocks = ["0.0.0.0/0"]
     # security_groups = [aws_security_group.internal_sg.id] 
   }
 
@@ -14,7 +14,7 @@ resource "aws_security_group" "rds" {
     protocol    = "tcp"
     from_port   = "3306"
     to_port     = "3306"
-    cidr_blocks = ["10.0.0.0/16"]
+    cidr_blocks = ["0.0.0.0/0"]
     # security_groups = [aws_security_group.internal_sg.id] 
   }
 
