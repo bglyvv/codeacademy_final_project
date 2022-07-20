@@ -28,7 +28,7 @@ resource "aws_db_instance" "production" {
   identifier             = "stepproject"
   allocated_storage      = 20
   engine                 = "mysql"
-  engine_version         = "5.7"
+  engine_version         = "8.0"
   instance_class         = "db.t2.micro"
   name                   = "phonebook"
   username               = "admin"
