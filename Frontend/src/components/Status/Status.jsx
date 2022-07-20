@@ -19,6 +19,8 @@ export default function Status() {
       })
       .catch((err) => {
         console.log(err);
+        setStatusData("Fail");
+        setStatusCode(response.status);
       });
   }, []);
 
