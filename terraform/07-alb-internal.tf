@@ -70,6 +70,6 @@ locals {
   
   var = {
     backend_url = aws_lb.backend_alb.dns_name
-    db = aws_db_instance.production.endpoint
+    db_endpoint = aws_db_instance.production.endpoint
   }
 }
