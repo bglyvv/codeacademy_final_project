@@ -58,21 +58,26 @@ resource "aws_lb_target_group" "app_target_group_backend" {
 
 output "backend_url" {
   value       = aws_lb.backend_alb.dns_name
-  description = "Backend URL for Frontend"
+  description = "Backend URL"
 }
 
 output "frontend_url" {
   value       = aws_lb.pubic_alb.dns_name
-  description = "DB"
+  description = "Frontend URL"
+}
+
+output "db_endpoint" {
+  value       = aws_db_instance.production.endpoint
+  description = "Database endpoint."
 }
 
 locals {
-  
-  var = {
+
+  vars = {
     backend_url = aws_lb.backend_alb.dns_name
     db_endpoint = aws_db_instance.production.endpoint
     db_password = aws_db_instance.production.password
     db_username = aws_db_instance.production.username
-    db_name = aws_db_instance.production.name
+    db_name     = aws_db_instance.production.name
   }
 }

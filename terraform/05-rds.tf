@@ -33,7 +33,7 @@ resource "aws_db_subnet_group" "production" {
 }
 
 resource "aws_db_instance" "production" {
-  identifier             = "mysqldb"
+  identifier             = "stepproject"
   allocated_storage      = 20
   engine                 = "mysql"
   engine_version         = "5.7"
@@ -48,12 +48,5 @@ resource "aws_db_instance" "production" {
   publicly_accessible    = true
 }
 
-output "db_endpoint" {
-  # value = "Host="+aws_db_instance.production.endpoint+";Port=3306;Username="+aws_db_instance.production.username+";Password="+aws_db_instance.production.password+";Database="+aws_db_instance.production.name
-  value       = aws_db_instance.production.endpoint
-#   value       = "Host=${aws_db_instance.production.endpoint};Port=3306;Username=${aws_db_instance.production.username};Password=${aws_db_instance.production.password};Database=${aws_db_instance.production.name}"
-  description = "The endpoint for logging in to the database."
-#   sensitive   = true
-}
 
 

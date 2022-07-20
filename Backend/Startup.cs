@@ -38,7 +38,7 @@ namespace StepProject
 
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseMySql(Configuration.GetConnectionString("Default"), new MySqlServerVersion(new Version(8, 0, 28)));
+                options.UseMySql(Configuration.GetConnectionString("Default"), new MySqlServerVersion(new Version(5, 7)));
             });
 
 

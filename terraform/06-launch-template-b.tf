@@ -30,7 +30,6 @@ resource "aws_launch_template" "asp_backend" {
   }
 
 
-  user_data = base64encode(templatefile("files/user_data.sh", local.var))
-  # user_data = filebase64("files/user_data.sh")
+  user_data = base64encode(templatefile("files/user_data.sh", local.vars))
 }
 
