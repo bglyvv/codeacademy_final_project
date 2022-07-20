@@ -45,7 +45,7 @@ resource "aws_db_instance" "production" {
   skip_final_snapshot    = true
   vpc_security_group_ids = [aws_security_group.rds.id]
   db_subnet_group_name   = aws_db_subnet_group.production.name
-  publicly_accessible    = false
+  publicly_accessible    = true
 }
 
 output "db_endpoint" {

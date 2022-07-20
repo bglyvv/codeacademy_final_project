@@ -61,8 +61,8 @@ output "backend_url" {
   description = "Backend URL for Frontend"
 }
 
-output "db" {
-  value       = aws_db_instance.production.endpoint
+output "frontend_url" {
+  value       = aws_lb.public_alb.dns_name
   description = "DB"
 }
 
@@ -71,5 +71,8 @@ locals {
   var = {
     backend_url = aws_lb.backend_alb.dns_name
     db_endpoint = aws_db_instance.production.endpoint
+    db_password = aws_db_instance.production.password
+    db_username = aws_db_instance.production.username
+    db_name = aws_db_instance.production.name
   }
 }

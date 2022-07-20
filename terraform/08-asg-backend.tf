@@ -15,7 +15,7 @@ resource "aws_autoscaling_group" "my-app-asg-backend" {
   protect_from_scale_in = false
 
   launch_template {
-    id      = aws_launch_template.nodejs_backend.id
+    id      = aws_launch_template.asp_backend.id
     version = "$Latest"
   }
 

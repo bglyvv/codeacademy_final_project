@@ -19,5 +19,5 @@ git clone https://github.com/bglyvv/codeacademy_final_project
 
 cd codeacademy_final_project/Backend
 
-docker build -t node_app .
-docker run -p 80:80 -e ConnectionStrings__Default="Host=${db_endpoint};Port=3306;Username=admin;Password=kb6853917;Database=phonebook" node_app
+docker build -t back .
+docker run -p 80:80 -e ConnectionStrings__Default="Host=${db_endpoint};Username=${db_username};Password=${db_password};Database=${db_name}" back
