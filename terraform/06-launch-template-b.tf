@@ -1,4 +1,4 @@
-resource "aws_launch_template" "nodejs_backend" {
+resource "aws_launch_template" "asp_backend" {
   name                                 = "backend-service"
   instance_type                        = "t2.micro"
   depends_on                           = [aws_db_instance.production]
@@ -25,7 +25,7 @@ resource "aws_launch_template" "nodejs_backend" {
     resource_type = "instance"
 
     tags = {
-      Name = "my-backend-app"
+      Name = "backend-app"
     }
   }
 

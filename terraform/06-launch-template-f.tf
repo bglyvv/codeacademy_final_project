@@ -25,7 +25,7 @@ resource "aws_launch_template" "react_frontend" {
         resource_type = "instance"
 
         tags = {
-            Name = "my-frontend-app"
+            Name = "frontend-app"
         }
     }
 
