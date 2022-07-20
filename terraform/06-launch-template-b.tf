@@ -29,6 +29,13 @@ resource "aws_launch_template" "nodejs_backend" {
     }
   }
 
+  locals {
+  
+  vars = {
+    db_endpoint = aws_db_instance.production.endpoint
+  }
+}
+
   user_data = base64encode(templatefile("files/user_data.sh", local.vars))
   # user_data = filebase64("files/user_data.sh")
 }
