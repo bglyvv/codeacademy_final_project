@@ -1,7 +1,7 @@
 resource "aws_launch_template" "nodejs_backend" {
-  name          = "backend-service"
-  instance_type = "t2.micro"
-  depends_on = [aws_db_instance.production]
+  name                                 = "backend-service"
+  instance_type                        = "t2.micro"
+  depends_on                           = [aws_db_instance.production]
   image_id                             = "ami-0cff7528ff583bf9a"
   instance_initiated_shutdown_behavior = "terminate"
 
@@ -29,6 +29,7 @@ resource "aws_launch_template" "nodejs_backend" {
     }
   }
 
-  user_data = filebase64("files/user_data.sh")
+  user_data = base64encode(templatefile("files/user_data.sh", local.vars))
+  # user_data = filebase64("files/user_data.sh")
 }
 

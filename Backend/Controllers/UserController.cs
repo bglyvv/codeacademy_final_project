@@ -209,7 +209,7 @@ namespace StepProject.Controllers
 
         [HttpGet]
         [Route("connection")]
-        public async Task<IActionResult> GetConnection(int id)
+        public IActionResult GetConnection(int id)
         {
             return Ok(_config.GetConnectionString("Default"));
 

@@ -56,9 +56,4 @@ output "db_endpoint" {
 #   sensitive   = true
 }
 
-locals {
-  
-  vars = {
-    db_endpoint = aws_db_instance.production.endpoint
-  }
-}
+
