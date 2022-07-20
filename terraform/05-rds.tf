@@ -11,14 +11,6 @@ resource "aws_security_group" "rds" {
   }
 
   egress {
-    protocol    = "tcp"
-    from_port   = "3306"
-    to_port     = "3306"
-    cidr_blocks = ["0.0.0.0/0"]
-    # security_groups = [aws_security_group.internal_sg.id] 
-  }
-
-  egress {
     protocol    = "-1"
     from_port   = "0"
     to_port     = "0"
@@ -47,6 +39,7 @@ resource "aws_db_instance" "production" {
   db_subnet_group_name   = aws_db_subnet_group.production.name
   publicly_accessible    = true
 }
+
 
 
 
